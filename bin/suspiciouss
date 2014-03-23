@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'suspiciouss'
+
+Suspiciouss::Linter.new.process

@@ -1,0 +1,39 @@
+--- a/path/to/file.css
++++ b/path/to/file.css
+
+
++ #please-dont {color: #FFF;}
+
+
+--- a/path/to/file.sass
++++ b/path/to/file.sass
+
+
++ #pleaseDont
++   color: $black
+
+
+--- a/path/to/file.less
++++ b/path/to/file.less
+
+
++ #pleaseDont {
++   color: @black;
++ }
+
+
+--- a/path/to/file.scss
++++ b/path/to/file.scss
+
+
++ #pleaseDont {
++   color: $black;
++ }
+
+
+--- a/path/to/file.txt
++++ b/path/to/file.txt
+
+
++ #undetectable {color: #000;}
+
