@@ -2,7 +2,9 @@
 +++ b/path/to/file.css
 
 
-+ #please-dont {color: #FFF;}
++ #please-dont {
++   color: #FFF;
++ }
 
 
 --- a/path/to/file.sass
@@ -35,5 +37,6 @@
 +++ b/path/to/file.txt
 
 
-+ #undetectable {color: #000;}
-
++ #undetectable {
++   color: #000;
++ }

@@ -3,7 +3,8 @@ module Suspiciouss
     class StylingIds
 
       def parse(line)
-        "Don't style IDs" if line =~ /#\w+[^\w]/
+        return if line.include?(':')
+        "Don't style IDs" if line =~ /#\w+/
       end
     end
   end

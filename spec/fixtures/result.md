@@ -1,6 +1,6 @@
  - Check file /path/to/file.css for:
 ```
-Don't style IDs: #please-dont {color: #FFF;}
+Don't style IDs: #please-dont {
 ```
  - Check file /path/to/file.sass for:
 ```
