@@ -7,13 +7,13 @@ describe Suspiciouss::Suggestions::CamelCase do
   describe '#parse' do
 
     context 'invalid' do
-      let(:line) { '.pleaseDont {color: #000;}' }
+      let(:line) { '.pleaseDont {' }
 
       it { should eq "Don't use camelCase" }
     end
 
     context 'valid' do
-      let(:line) { '.valid-selector {color: #FFF;}' }
+      let(:line) { '.valid-selector {' }
 
       it { should be_nil }
     end
