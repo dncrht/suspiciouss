@@ -98,11 +98,15 @@ module Suspiciouss
     def config
       return {} unless has_config?
 
-      @config ||= YAML::load(File.open('.suspiciouss'))
+      @config ||= YAML::load(File.open(config_file))
     end
 
     def has_config?
-      File.exists?('.suspiciouss')
+      File.exists?(config_file)
+    end
+
+    def config_file
+      '.suspiciouss.yml'
     end
   end
 end

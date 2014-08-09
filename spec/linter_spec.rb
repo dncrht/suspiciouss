@@ -46,7 +46,7 @@ describe Suspiciouss::Linter do
 
     context 'when we have a config file that specifies what to include' do
       before do
-        File.open(".suspiciouss", "w") do |f|
+        File.open(".suspiciouss.yml", "w") do |f|
           f.write({
             :include => [
               'CamelCase'
@@ -64,7 +64,7 @@ describe Suspiciouss::Linter do
 
     context 'when we have a config file that specifies what to exclude' do
       before do
-        File.open(".suspiciouss", "w") do |f|
+        File.open(".suspiciouss.yml", "w") do |f|
           f.write({
             :exclude => [
               'StylingIds',
@@ -87,7 +87,7 @@ describe Suspiciouss::Linter do
 
     context 'when we have a config file that specifies what to include _and_ exclude' do
       before do
-        File.open(".suspiciouss", "w") do |f|
+        File.open(".suspiciouss.yml", "w") do |f|
           f.write({
             :include => [
               'CamelCase',
