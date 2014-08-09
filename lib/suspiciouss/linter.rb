@@ -37,6 +37,10 @@ module Suspiciouss
       end
     end
 
+    def suggestions_to_use
+      included_suggestions.reject { |s| excluded_suggestions.include?(s) }
+    end
+
     private
 
     # Detects if the diff block references a known file type
@@ -70,16 +74,39 @@ module Suspiciouss
       formatter.new(@result).format
     end
 
-    # Memoizes available suggestions in an array
+    # Returns a line without the "+ " added by diff
+    def strip_diff_syntax(line)
+      line[2..-1]
+    end
+
     def known_suggestions
-      @known_suggestions ||= SUGGESTIONS.constants.map do |suggestion_class|
+      @known_suggestions ||= suggestions_to_use.map do |suggestion_class|
         SUGGESTIONS.const_get(suggestion_class).new
       end
     end
 
-    # Returns a line without the "+ " added by diff
-    def strip_diff_syntax(line)
-      line[2..-1]
+    def included_suggestions
+      return SUGGESTIONS.constants unless config.has_key?(:include)
+      SUGGESTIONS.constants.select { |s| config[:include].include?(s.to_s) }
+    end
+
+    def excluded_suggestions
+      return [] unless config.has_key?(:exclude)
+      SUGGESTIONS.constants.select { |s| config[:exclude].include?(s.to_s) }
+    end
+
+    def config
+      return {} unless has_config?
+
+      @config ||= YAML::load(File.open(config_file))
+    end
+
+    def has_config?
+      File.exists?(config_file)
+    end
+
+    def config_file
+      '.suspiciouss.yml'
     end
   end
 end
