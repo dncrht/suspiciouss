@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'fakefs/spec_helpers'
+require 'yaml'
 
 describe Suspiciouss::Linter do
 
@@ -35,6 +36,7 @@ describe Suspiciouss::Linter do
     it 'is a list of Linters' do
       expect(suggestions_to_use).to match_array(%w(
         CamelCase
+        Element
         Indentation
         Overqualifying
         StylingIds
@@ -77,6 +79,7 @@ describe Suspiciouss::Linter do
       it 'excludes those suggestions' do
         expect(suggestions_to_use).to match_array(%w(
           CamelCase
+          Element
           Overqualifying
           StylingJsPrefix
           Underscores

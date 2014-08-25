@@ -1,4 +1,5 @@
 require 'suspiciouss/suggestions/camel_case'
+require 'suspiciouss/suggestions/element'
 require 'suspiciouss/suggestions/indentation'
 require 'suspiciouss/suggestions/overqualifying'
 require 'suspiciouss/suggestions/styling_ids'
@@ -58,13 +59,13 @@ module Suspiciouss
     # Parses a line with each of the known suggestions and adds the result
     # to the final output.
     def parse(full_line)
-      @line = strip_diff_syntax full_line
+      line = strip_diff_syntax full_line
 
       return unless full_line =~ /^\+ /
 
       known_suggestions.each do |suggestion|
-        if result = suggestion.parse(@line)
-          @result[@filename] << "#{result}: #{@line}"
+        if result = suggestion.parse(line)
+          @result[@filename] << "#{result}: #{line}"
         end
       end
     end
