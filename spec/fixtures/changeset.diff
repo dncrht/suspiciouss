@@ -11,6 +11,7 @@
 +++ b/path/to/file.sass
 
 
++ // This comment is ignored even if it has a #hash
 + #pleaseDont
 +   color: $black
 

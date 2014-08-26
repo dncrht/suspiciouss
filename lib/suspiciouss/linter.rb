@@ -59,7 +59,7 @@ module Suspiciouss
     # Parses a line with each of the known suggestions and adds the result
     # to the final output.
     def parse(full_line)
-      line = strip_diff_syntax full_line
+      line = strip_diff_syntax(remove_line_comments(full_line))
 
       return unless full_line =~ /^\+ /
 
@@ -78,6 +78,11 @@ module Suspiciouss
     # Returns a line without the "+ " added by diff
     def strip_diff_syntax(line)
       line[2..-1]
+    end
+
+    # Returns a line without comments
+    def remove_line_comments(line)
+      line.gsub /\/\/.*$/, ''
     end
 
     def known_suggestions
